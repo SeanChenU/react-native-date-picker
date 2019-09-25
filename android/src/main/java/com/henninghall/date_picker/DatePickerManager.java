@@ -60,6 +60,11 @@ public class DatePickerManager extends SimpleViewManager<PickerView>  {
     view.setMinimumDate(date);
   }
 
+  @ReactProp(name = "is24Hour")
+  public void is24Hour(PickerView view, boolean date) {
+    view.is24Hour(date);
+  }
+
   @ReactProp(name = "maximumDate")
   public void setMaximumDate(PickerView view, String date) {
     view.setMaximumDate(date);

@@ -101,7 +101,11 @@ public class PickerView extends RelativeLayout {
             }
         });
     }
-
+    
+    public void is24Hour(boolean data) {
+        Settings newSetting = new Settings();
+        newSetting.is24Hour(data);
+    }
 
     public void setMinimumDate(String date) {
         minDate = new DateBoundary(this, date);

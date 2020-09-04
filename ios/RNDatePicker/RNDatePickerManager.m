@@ -28,7 +28,13 @@ RCT_EXPORT_MODULE()
 
 - (UIView *)view
 {
-  return [DatePicker new];
+  DatePicker *datePicker = [DatePicker new];
+  
+  if(@available(iOS 13, *)) {
+      datePicker.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+  }
+
+  return datePicker;
 }
 
 RCT_EXPORT_VIEW_PROPERTY(date, NSDate)

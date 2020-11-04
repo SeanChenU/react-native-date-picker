@@ -31,7 +31,7 @@ RCT_EXPORT_MODULE()
   DatePicker *datePicker = [DatePicker new];
   
   if(@available(iOS 13, *)) {
-      datePicker.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
+      datePicker.overrideUserInterfaceStyle = UIUserInterfaceStyleLight;
   }
 
   return datePicker;

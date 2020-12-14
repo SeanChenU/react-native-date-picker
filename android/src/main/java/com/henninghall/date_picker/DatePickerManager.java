@@ -43,6 +43,47 @@ public class DatePickerManager extends SimpleViewManager<PickerView>  {
     return new PickerView();
   }
 
+  @ReactProp(name = "mode")
+  public void setMode(PickerView view, String mode) {
+    Mode m;
+    try {
+      m = Mode.valueOf(mode);
+    } catch (Exception e) {
+      throw new IllegalArgumentException("Invalid mode. Valid modes: 'datetime', 'date', 'time'");
+    }
+    view.setMode(m);
+  }
+
+  @ReactProp(name = "date")
+  public void setDate(PickerView view, String date) {
+    this.date = date;
+  }
+
+  @ReactProp(name = "locale")
+  public void setLocale(PickerView view, String locale) {
+    view.setLocale(LocaleUtils.toLocale(locale.replace('-','_')));
+  }
+
+  @ReactProp(name = "minimumDate")
+  public void setMinimumDate(PickerView view, String date) {
+    view.setMinimumDate(date);
+  }
+
+  @ReactProp(name = "is24Hour")
+  public void is24Hour(PickerView view, boolean date) {
+    view.is24Hour(date);
+  }
+
+  @ReactProp(name = "maximumDate")
+  public void setMaximumDate(PickerView view, String date) {
+    view.setMaximumDate(date);
+  }
+
+  @ReactProp(name = "fadeToColor")
+  public void setFadeToColor(PickerView view, String color) {
+    view.style.setFadeToColor(color);
+  }
+
   @ReactPropGroup(names = { DateProp.name, ModeProp.name, LocaleProp.name, MaximumDateProp.name,
           MinimumDateProp.name, FadeToColorProp.name, TextColorProp.name, UtcProp.name, MinuteIntervalProp.name,
           VariantProp.name, DividerHeightProp.name, Is24hourSourceProp.name

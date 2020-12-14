@@ -29,8 +29,26 @@ public class PickerView extends RelativeLayout {
         super(DatePickerManager.context);
     }
 
-    public void update() {
+    public void is24Hour(boolean data) {
+        Settings newSetting = new Settings();
+        newSetting.is24Hour(data);
+    }
 
+    private void changeAmPmWhenPassingMidnightOrNoon(){
+        hourWheel.picker.setOnValueChangeListenerInScrolling(new NumberPickerView.OnValueChangeListenerInScrolling() {
+            @Override
+            public void onValueChangeInScrolling(NumberPickerView picker, int oldVal, int newVal) {
+                if(Settings.usesAmPm()){
+                    String oldValue = hourWheel.getValueAtIndex(oldVal);
+                    String newValue = hourWheel.getValueAtIndex(newVal);
+                    boolean passingNoonOrMidnight = (oldValue.equals("12") && newValue.equals("11")) || oldValue.equals("11") && newValue.equals("12");
+                    if (passingNoonOrMidnight) ampmWheel.picker.smoothScrollToValue((ampmWheel.picker.getValue() + 1) % 2,false);
+                }
+            }
+        });
+    }
+
+    public void update() {
         if (didUpdate(VariantProp.name)) {
             this.removeAllViewsInLayout();
             inflate(getContext(), state.derived.getRootLayout(), this);

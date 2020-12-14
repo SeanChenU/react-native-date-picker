@@ -56,6 +56,7 @@
         }
         if(@available(iOS 14, *)) {
             self.preferredDatePickerStyle = UIDatePickerStyleWheels;
+            self.subviews[0].subviews[1].backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         }
          _reactMinuteInterval = 1;
     }

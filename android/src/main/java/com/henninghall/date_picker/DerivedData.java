@@ -117,8 +117,10 @@ public class DerivedData {
     }
 
     public boolean usesAmPm(){
-        if(state.getIs24HourSource() == locale) return LocaleUtils.localeUsesAmPm(state.getLocale());
-        return Utils.deviceUsesAmPm();
+        //        if(state.getIs24HourSource() == locale) return LocaleUtils.localeUsesAmPm(state.getLocale());
+        //        return Utils.deviceUsesAmPm();
+        Settings settings = new Settings();
+        return settings.usesAmPm();
     }
 
     public boolean hasOnly2Wheels(){
